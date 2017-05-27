@@ -7,6 +7,7 @@ export default class App extends Component {
     this.state = {
       counter: 0,
       value: '',
+      textValue: '',
     };
   }
 
@@ -14,11 +15,16 @@ export default class App extends Component {
     this.setState({ value: event.target.value });
   };
 
+  changeText = () => {
+    this.setState({ textValue: this.state.value });
+    this.setState({ value: '' });
+  };
+
   render() {
     return (
       <div>
-        {this.state.value}
-        <Button name={"Add 1"} clicked={() => this.setState({ counter: this.state.counter + 1 })} />
+        {this.state.textValue}<br />
+        <Button name={"Search"} clicked={this.changeText} />
         <input type="text" value={this.state.value} onChange={this.textEntered} />
       </div>
     );
